@@ -6,8 +6,12 @@ export const styles = StyleSheet.create({
         backgroundColor: 'red',
     },
     text: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    image:{
+        width:50,
+        height:50
     }
 })
