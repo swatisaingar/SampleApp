@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, TextInput, Image, ScrollView, Button, Alert, StyleSheet, FlatList, TouchableOpacity, StatusBar } from 'react-native'
+import { View, Text, Image, ScrollView, Button, Alert, StyleSheet, FlatList, TouchableOpacity, StatusBar ,AsyncStorage} from 'react-native'
 import { styles } from './Style';
+import { TextInput } from 'react-native-paper';
+import  Icon  from 'react-native-vector-icons/AntDesign';
+
 const App = () => {
+
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const array = ['Swati', 'Sumit', 'Vishal']
   useEffect(() => {
     console.log('Calleldd')
-    setUserName('Swati');
-    setPassword('12345')
+    // setUserName('Swati');
+    setPassword('12345');
   }, [1000]);
   const handleButton = () => {
     Alert.alert('Clickleddß');
@@ -68,6 +72,15 @@ const App = () => {
         <Text>HII</Text>
         <Text>hii</Text>
       </TouchableOpacity>
+
+      {/* Installing - npm install packagename,yarn add packagename */}
+      <TextInput
+        label="Email"
+        value={userName}
+        onChangeText={text => setUserName(text)}
+      />
+
+      <Icon name="taobao-circle" size={30} color="#900" />
     </View>
   )
 }
