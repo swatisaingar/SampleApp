@@ -3,9 +3,14 @@ import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity } from "rea
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Signup = ({ navigation }) => {
-    const [userName, setUserName] = useState('Swati')
+    const [userName, setUserName] = useState('Swati');
+    const [email, setEmail] = useState('xyz')
     const handleSubmit = () => {
-        navigation.navigate('Home', { data: userName })
+        const formdata = {
+            name:userName,
+            email:email
+        }
+        navigation.navigate('Home', { data: formdata})
     }
     return (
         <View style={styles.container}>
@@ -14,8 +19,14 @@ const Signup = ({ navigation }) => {
                 <Icon name="user" size={20} />
                 <TextInput placeholder="UserName" style={styles.textInput} />
             </View>
-            <TextInput placeholder="Email" style={styles.textInput} />
-            <TextInput placeholder="MobileNumber" style={styles.textInput} />
+            <View style={styles.rowContainer}>
+                <Icon name="envelope" size={20} />
+                <TextInput placeholder="Email" style={styles.textInput} />
+            </View>
+            <View style={styles.rowContainer}>
+                <Icon name="phone" size={20} />
+                <TextInput placeholder="MobileNumber" style={styles.textInput} />
+            </View>
             <TouchableOpacity style={styles.signupcontainer} onPress={() => handleSubmit()}>
                 <Text style={styles.signuptext}>SignUp</Text>
             </TouchableOpacity>

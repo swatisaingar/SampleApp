@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-const Home = ({route}) => {
+const CustomCart = ({route}) => {
     var detail = route?.params?.formdata?.name
     
     return (
@@ -11,4 +11,4 @@ const Home = ({route}) => {
     )
 }
 
-export default Home;
+export default CustomCart;

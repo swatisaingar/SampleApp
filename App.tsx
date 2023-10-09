@@ -93,7 +93,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import Home from './src/screens/Home';
+import DrawerStack from './src/Navigators/Drawer';
 import Signup from './src/screens/Signup';
 
 const Stack = createStackNavigator();
@@ -102,7 +102,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="SignUp" component={Signup} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={DrawerStack} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
