@@ -95,15 +95,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import DrawerStack from './src/Navigators/Drawer';
 import Signup from './src/screens/Signup';
-
+import { ApiProvider } from './src/api/Provider';
 const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="SignUp" component={Signup} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={DrawerStack} options={{ headerShown: false }}/>
-      </Stack.Navigator>
+       <ApiProvider>
+        <Stack.Navigator>
+          <Stack.Screen name="SignUp" component={Signup} options={{ headerShown: false }} />
+          <Stack.Screen name="Home" component={DrawerStack} options={{ headerShown: false }} />
+        </Stack.Navigator>
+        </ApiProvider>
     </NavigationContainer>
   )
 }

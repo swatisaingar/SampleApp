@@ -1,23 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MyContext from "../api/Context";
+import { useApi } from "../api/Provider";
 
 const Signup = ({ navigation }) => {
-    const [userName, setUserName] = useState('Swati');
+    const { login } = useApi();
+    const [userName, setUserName] = useState();
+
     const [email, setEmail] = useState('xyz')
-    const handleSubmit = () => {
-        const formdata = {
-            name:userName,
-            email:email
+    const handleSubmit = async () => {
+        try {
+            const response = await login(userName);
+            console.log(response)
+            if (response.success) {
+                navigation.navigate('Home');
+            } else {
+                // ToastAndroid.show('Login failed:', response.error);
+            }
+        } catch (error) {
+            console.log('API Error:', error);
         }
-        navigation.navigate('Home', { data: formdata})
+        // navigation.navigate('Home', { data: formdata })
     }
     return (
         <View style={styles.container}>
             <Text style={styles.signup}>Sign Up</Text>
             <View style={styles.rowContainer}>
                 <Icon name="user" size={20} />
-                <TextInput placeholder="UserName" style={styles.textInput} />
+                <TextInput placeholder="UserName" style={styles.textInput} value={userName} onChangeText={(text) => setUserName(text)} />
             </View>
             <View style={styles.rowContainer}>
                 <Icon name="envelope" size={20} />
