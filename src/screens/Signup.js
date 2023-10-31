@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import MyContext from "../api/Context";
 import { useApi } from "../api/Provider";
 
 const Signup = ({ navigation }) => {
