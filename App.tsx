@@ -96,16 +96,23 @@ import React from 'react';
 import DrawerStack from './src/Navigators/Drawer';
 import Signup from './src/screens/Signup';
 import { ApiProvider } from './src/api/Provider';
+import { Provider } from 'react-redux';
+import store from './src/store';
+import Counter from './src/screens/Counter';
+
 const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-       <ApiProvider>
-        <Stack.Navigator>
+      {/* <ApiProvider> */}
+      <Provider store={store}>
+        <Stack.Navigator initialRouteName='Counter'>
+          <Stack.Screen name="Counter" component={Counter} options={{ headerShown: false }} />
           <Stack.Screen name="SignUp" component={Signup} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={DrawerStack} options={{ headerShown: false }} />
         </Stack.Navigator>
-        </ApiProvider>
+      </Provider>
+      {/* </ApiProvider> */}
     </NavigationContainer>
   )
 }
